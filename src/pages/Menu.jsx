@@ -24,12 +24,12 @@ const Menu = () => {
       </div>
 
       <div className="container p-3">
-        <img src=".../../public/assets/menu.jpg" alt="" className="img img-fluid rounded shadow" />
+        <img src="./assets/menu.jpg" alt="" className="img img-fluid rounded shadow" />
       </div>
 
       <div className="menu-container mt-4 shadow">
         <header className="menu-header">
-          <img src="../../public/assets/logo.png" alt="GK Chokkies & Pickles" className="logo" />
+          <img src="./assets/logo.png" alt="GK Chokkies & Pickles" className="logo" />
           <h1 className="menu-title">Menu</h1>
           <p className="contact-info">📞 8522856226</p>
         </header>
