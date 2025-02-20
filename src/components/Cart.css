@@ -1,0 +1,117 @@
+/* General Styling */
+.cart-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .cart-card {
+    border-radius: 12px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .cart-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .price-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .quantity-text {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* Checkout Section */
+  .checkout-section {
+    padding: 20px;
+    border-top: 2px solid #ddd;
+  }
+  
+  .checkout-btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  
+  /* Payment Section */
+  .payment-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .payment-buttons .btn {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  
+  .payment-buttons .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .payment-buttons .btn-outline-primary {
+    border: 2px solid #007bff;
+    color: #007bff;
+  }
+  
+  .payment-buttons .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* UPI Payment */
+  .upi-payment {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f2f2f2;
+    border-radius: 8px;
+  }
+  
+  .upi-payment h5 {
+    font-size: 1.3rem;
+    color: #343a40;
+  }
+  
+  .upi-payment p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* QR Code Styling */
+  .qr-code-container {
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  
+  .qr-code-container img {
+    border-radius: 8px;
+  }
+  
+  /* Payment Success Message */
+  .alert-success {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  

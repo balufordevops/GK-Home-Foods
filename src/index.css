@@ -1,0 +1,335 @@
+/* General Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(90deg, #a6fae8, #a2b3ff);
+  color: #080504;
+  font-family: "Ysabeau SC", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  animation: backgroundAnimation 8s cubic-bezier(0.86, 0, 0.07, 1) infinite alternate;
+}
+
+/* Modern Background Animation */
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(90deg, #a6eaff, #a2b3ff);
+  }
+  50% {
+    background: linear-gradient(90deg, #889aeb, #a6eaff);
+  }
+  100% {
+    background: linear-gradient(90deg, #9cc5fa, #71acbe);
+  }
+}
+
+/* Hover Effects for Smooth Interaction */
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Title Animation */
+.category-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: fadeInSlide 1.5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+/* Modern Fade-in + Slide Animation */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button Hover Animation */
+.pagination button {
+  transition: background-color 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.pagination button:hover {
+  background-color: #ff6600;
+}
+
+/* Floating Cart Icon Animation */
+.cart-icon {
+  position: relative;
+  animation: cartBounce 2s infinite ease-in-out;
+}
+
+/* Bouncing Animation for Cart */
+@keyframes cartBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Hover effects for the cards */
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* General styling for better spacing */
+.categories-section .card {
+  border: none;
+  transition: transform 0.3s ease-in-out;
+}
+.categories-section .card img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.categories-section .card:hover img {
+  transform: scale(1.1);
+}
+
+.btn-success {
+  width: 100%;
+  position: relative;
+}
+
+.row > .col-12,
+.row > .col-sm-6,
+.row > .col-md-4,
+.row > .col-lg-3 {
+  padding: 15px; /* Add gaps between cards */
+}
+
+/* Loading Spinner */
+.spinner {
+  margin: 100px auto;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  
+  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+/* Search Bar Styling */
+.search-bar {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: #007bff;
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:disabled {
+  background-color: #9a66e9;
+  cursor: not-allowed;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Ensures all cards have the same size */
+.cart-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title styling to ensure uniform height and truncation */
+.cart-card .card-title {
+  min-height: 3rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/* Image settings to maintain uniformity */
+.product-img {
+  height: 250px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+/* Align checkout section */
+.checkout-section {
+  border-top: 2px solid #ddd;
+  padding-top: 20px;
+}
+
+/* Menu Styles */
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+
+.menu-header .logo {
+  max-width: 200px;
+  animation: logoAnimation 2s ease-in-out;
+}
+
+.menu-title {
+  font-size: 2.5rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.contact-info {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Category Styles */
+.category {
+  margin-top: 40px;
+}
+
+.category-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #110b09;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  animation: categoryTitleAnimation 2s ease-in-out;
+}
+
+.item-list {
+  list-style-type: none;
+}
+
+.menu-item {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.menu-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #080504;
+  font-size: 1.5rem;
+}
+
+.menu-item:hover {
+  color: #d84315;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Animations */
+@keyframes logoAnimation {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes categoryTitleAnimation {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
