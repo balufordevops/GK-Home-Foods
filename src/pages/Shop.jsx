@@ -4,28 +4,28 @@ import { toast } from "react-toastify";
 import "./Shop.css";
 
 // Import images
-import DarkChocolate from "../assets/Dark_Chocolate.jpg";
-import MilkChocolate from "../assets/Milk_Chocolate.jpg";
-import ClassicPlaneChocolate from "../assets/ClassicplaneChocolate.jpg";
-import DryFruitsChocolate from "../assets/Dry fruit.jpg";
-import FlavouredChocolate from "../assets/flavoured chocolate.jpg";
-import RoseGulakand from "../assets/rose gulakand.jpg";
-import PanmasalaChocolate from "../assets/panmasala.jpg";
-import mango from "../assets/mango.jpg";
-import PineApple from "../assets/pineapple.jpg";
-import BlueBerry from "../assets/blueberry.jpg";
-import Strawberry from "../assets/strawberry.jpg";
-import dryFruitsLaddu from "../assets/dry fruit laddu.jpg";
-import khajuchikki from "../assets/khaju chikki.jpg";
-import oreoChocolate from "../assets/oreo.jpg";
-import cakePops from "../assets/cake pops.jpg";
-import Caramel from "../assets/caramel.jpg";
-import coconutBounty from "../assets/coconut bounty.jpg";
-import datesDryFruits from "../assets/dates dry fruits.jpg";
-import dubaiKunafa from "../assets/dubai kunafa.jpg";
-import proteinBites from "../assets/protein bites.jpg";
-import chickenPickle from "../assets/chicken pickle.jpg";
-import prawnsPickle from "../assets/prawns pickle.jpg";
+import DarkChocolate from "../../public/assets/Dark_Chocolate.jpg";
+import MilkChocolate from "../../public/assets/Milk_Chocolate.jpg";
+import ClassicPlaneChocolate from "../../public/assets/ClassicplaneChocolate.jpg";
+import DryFruitsChocolate from "../../public/assets/Dry fruit.jpg";
+import FlavouredChocolate from "../../public/assets/flavoured chocolate.jpg";
+import RoseGulakand from "../../public/assets/rose gulakand.jpg";
+import PanmasalaChocolate from "../../public/assets/panmasala.jpg";
+import mango from "../../public/assets/mango.jpg";
+import PineApple from "../../public/assets/pineapple.jpg";
+import BlueBerry from "../../public/assets/blueberry.jpg";
+import Strawberry from "../../public/assets/strawberry.jpg";
+import dryFruitsLaddu from "../../public/assets/dry fruit laddu.jpg";
+import khajuchikki from "../../public/assets/khaju chikki.jpg";
+import oreoChocolate from "../../public/assets/oreo.jpg";
+import cakePops from "../../public/assets/cake pops.jpg";
+import Caramel from "../../public/assets/caramel.jpg";
+import coconutBounty from "../../public/assets/coconut bounty.jpg";
+import datesDryFruits from "../../public/assets/dates dry fruits.jpg";
+import dubaiKunafa from "../../public/assets/dubai kunafa.jpg";
+import proteinBites from "../../public/assets/protein bites.jpg";
+import chickenPickle from "../../public/assets/chicken pickle.jpg";
+import prawnsPickle from "../../public/assets/prawns pickle.jpg";
 
 const categories = [
   {
