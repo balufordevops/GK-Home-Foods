@@ -13,8 +13,10 @@ const Cart = () => {
 
   const [showPaymentOptions, setShowPaymentOptions] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [selectedUPIApp, setSelectedUPIApp] = useState("");
   const [showQR, setShowQR] = useState(false);
-  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [paymentCompleted, setPaymentCompleted] = useState(false);
 
   const upiID = "8522856226-2@ybl";
   const totalAmount = cart.reduce((total, item) => total + item.basePrice * item.quantity, 0).toFixed(2);
@@ -27,23 +29,32 @@ const Cart = () => {
     }
     setShowPaymentOptions(true);
     setShowQR(false);
-    setPaymentConfirmed(false);
   }
 
   function handlePaymentMethodChange(method) {
     setSelectedPaymentMethod(method);
     setShowQR(false);
-    if (method === "card" || method === "netbanking") {
-      handleRazorpayPayment();
-    }
   }
 
-  function handleUPISelection() {
-    setShowQR(true);
+  function handleUPISelection(app) {
+    setSelectedUPIApp(app);
   }
 
   function handlePaymentConfirmation() {
-    setPaymentConfirmed(true);
+    if (!paymentCompleted) {
+      toast.error("Payment not completed!");
+      return;
+    }
+    const orderDetails = {
+      orderId: `GK${Date.now()}`,
+      placedOn: new Date().toLocaleString(),
+      products: cart,
+      totalItems: cart.length,
+      subTotal: totalAmount,
+      deliveryFee: 50,
+      totalAmount: (parseFloat(totalAmount) + 50).toFixed(2),
+    };
+    localStorage.setItem("orderDetails", JSON.stringify(orderDetails));
     toast.success("Payment Successful! Your order has been placed.");
     dispatch({ type: "CLEAR_CART" });
     setTimeout(() => {
@@ -52,13 +63,15 @@ const Cart = () => {
   }
 
   function handleRazorpayPayment() {
+    setIsProcessingPayment(true);
     const options = {
-      key: "rzp_test_your_key_here", // Replace with your Razorpay key
-      amount: totalAmount * 100, // Convert to paise
+      key: "rzp_test_33H0WxHF8MUF98",
+      amount: totalAmount * 100,
       currency: "INR",
       name: "GK Home Foods",
       description: "Order Payment",
       handler: function (response) {
+        setPaymentCompleted(true);
         toast.success("Payment Successful!");
         handlePaymentConfirmation();
       },
@@ -75,9 +88,25 @@ const Cart = () => {
     razorpay.open();
   }
 
-  function copyUPI() {
-    navigator.clipboard.writeText(upiID);
-    toast.success("UPI ID copied to clipboard!");
+  function handleUPIPayment() {
+    if (!selectedUPIApp) {
+      toast.error("Please select a UPI app");
+      return;
+    }
+    setIsProcessingPayment(true);
+    let upiAppURL = "";
+    if (selectedUPIApp === "PhonePe") {
+      upiAppURL = `phonepe://upi/pay?pa=${upiID}&pn=GK Home Foods&am=${totalAmount}&cu=INR`;
+    } else if (selectedUPIApp === "Google Pay") {
+      upiAppURL = `tez://upi/pay?pa=${upiID}&pn=GK Home Foods&am=${totalAmount}&cu=INR`;
+    } else if (selectedUPIApp === "Paytm") {
+      upiAppURL = `paytmmp://upi/pay?pa=${upiID}&pn=GK Home Foods&am=${totalAmount}&cu=INR`;
+    }
+    window.location.href = upiAppURL;
+    setTimeout(() => {
+      setPaymentCompleted(true);
+      toast.info("Please confirm your payment before proceeding.");
+    }, 5000);
   }
 
   return (
@@ -97,17 +126,6 @@ const Cart = () => {
                   <h5 className="card-title">{item.name}</h5>
                   <p className="card-text price-text">Price: ₹{item.basePrice * item.quantity}</p>
                   <p className="card-text quantity-text">Quantity: {item.quantity}</p>
-                  <div className="d-flex justify-content-center">
-                    <button className="btn btn-outline-success mx-1" onClick={() => dispatch({ type: "INCREMENT", payload: { id: item.id } })}>
-                      +
-                    </button>
-                    <button className="btn btn-outline-warning mx-1" onClick={() => dispatch({ type: "DECREMENT", payload: { id: item.id } })}>
-                      -
-                    </button>
-                    <button className="btn btn-outline-danger mx-1" onClick={() => dispatch({ type: "REMOVE_ITEM_IN_CART", payload: { id: item.id } })}>
-                      <i className="bi bi-trash-fill"></i>
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -116,7 +134,6 @@ const Cart = () => {
           <h1 className="text-center">Cart Is Empty</h1>
         )}
       </div>
-
       {cart.length > 0 && (
         <div className="checkout-section text-center">
           <h3>Total: ₹{totalAmount}</h3>
@@ -125,34 +142,20 @@ const Cart = () => {
           </button>
         </div>
       )}
-
       {showPaymentOptions && (
         <div className="payment-section text-center">
           <h4>Select Payment Method</h4>
           <div className="payment-buttons">
-            <button className={`btn ${selectedPaymentMethod === "upi" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => handlePaymentMethodChange("upi")}>
-              UPI
-            </button>
-            <button className={`btn ${selectedPaymentMethod === "card" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => handlePaymentMethodChange("card")}>
-              Credit/Debit Card
-            </button>
-            <button className={`btn ${selectedPaymentMethod === "netbanking" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => handlePaymentMethodChange("netbanking")}>
-              Net Banking
-            </button>
+            <button className="btn btn-primary mx-2" onClick={() => handlePaymentMethodChange("upi")}>UPI</button>
+            <button className="btn btn-primary mx-2" onClick={handleRazorpayPayment}>Credit/Debit Card / Net Banking</button>
           </div>
-
           {selectedPaymentMethod === "upi" && (
-            <div className="upi-payment">
-              <button className="btn btn-outline-primary my-2" onClick={handleUPISelection}>
-                Generate QR Code
-              </button>
-              {showQR && (
-                <>
-                  <h5>Scan to Pay</h5>
-                  <QRCodeCanvas value={upiLink} size={200} />
-                  <p>UPI ID: <b>{upiID}</b> <button className="btn btn-secondary btn-sm" onClick={copyUPI}>Copy</button></p>
-                </>
-              )}
+            <div className="upi-app-selection text-center mt-3">
+              <h5>Select UPI App</h5>
+              <button className="btn btn-secondary mx-2" onClick={() => handleUPISelection("PhonePe")}>PhonePe</button>
+              <button className="btn btn-secondary mx-2" onClick={() => handleUPISelection("Google Pay")}>Google Pay</button>
+              <button className="btn btn-secondary mx-2" onClick={() => handleUPISelection("Paytm")}>Paytm</button>
+              <button className="btn btn-success mt-3" onClick={handleUPIPayment}>Pay ₹{totalAmount}</button>
             </div>
           )}
         </div>

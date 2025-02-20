@@ -11,6 +11,7 @@ import Search from './components/Search'
 import { Routes,Route } from 'react-router-dom'
 import Footer from './components/Footer'
 import Menu from './pages/Menu'
+import OrderConfirmation from './pages/OrderConfirmation';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route  path='/contact' element={<Contact/>} />
         <Route  path='/about' element={<About/>} />
         <Route  path='/cart' element={<Cart/>} /> 
+        <Route path='/order-confirmation' element={<OrderConfirmation />} /> 
         <Route path="/search" element={<Search />} />
         <Route  path='*' element={<ProductNotFound/>} />
       </Routes>
