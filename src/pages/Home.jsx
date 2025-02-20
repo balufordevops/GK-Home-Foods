@@ -19,7 +19,7 @@ const Home = () => {
       <section
         className="hero-section text-center py-5 d-flex align-items-center justify-content-center container-fluid"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../public/assets/bg1.jpg')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/bg1.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           height: "80vh",
@@ -43,7 +43,7 @@ const Home = () => {
           <div className="row justify-content-center">
             <div className="col-md-4 col-sm-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
               <div className="card shadow h-100 category-card" style={{ overflow: "hidden", borderRadius: "15px" }}>
-                <img src="../../public/assets/fas.jpg" className="card-img-top" alt="Sweets" style={{ height: "200px", objectFit: "cover" }} />
+                <img src="./assets/fas.jpg" className="card-img-top" alt="Sweets" style={{ height: "200px", objectFit: "cover" }} />
                 <div className="card-body">
                   <h5 className="card-title">Sweets</h5>
                   <p className="card-text">Explore delicious sweets and traditional treats!</p>
@@ -54,7 +54,7 @@ const Home = () => {
 
             <div className="col-md-4 col-sm-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
               <div className="card shadow h-100 category-card" style={{ overflow: "hidden", borderRadius: "15px" }}>
-                <img src="../../public/assets/elec.jpg" className="card-img-top" alt="Chocolates" style={{ height: "200px", objectFit: "cover" }} />
+                <img src="./assets/elec.jpg" className="card-img-top" alt="Chocolates" style={{ height: "200px", objectFit: "cover" }} />
                 <div className="card-body">
                   <h5 className="card-title">Chocolates</h5>
                   <p className="card-text">Indulge in rich, decadent chocolates and sweet delights!</p>
@@ -65,7 +65,7 @@ const Home = () => {
 
             <div className="col-md-4 col-sm-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
               <div className="card shadow h-100 category-card" style={{ overflow: "hidden", borderRadius: "15px" }}>
-                <img src="../../public/assets/jew.jpg" className="card-img-top" alt="Pickles" style={{ height: "200px", objectFit: "cover" }} />
+                <img src="./assets/jew.jpg" className="card-img-top" alt="Pickles" style={{ height: "200px", objectFit: "cover" }} />
                 <div className="card-body">
                   <h5 className="card-title">Pickles</h5>
                   <p className="card-text">Savor the tangy and spicy goodness of authentic pickles!</p>
@@ -95,7 +95,7 @@ const Home = () => {
                   height:'380px'
                 }}>
                   <img 
-                    src="../../public/assets/3g.jpg" 
+                    src="./assets/3g.jpg" 
                     className="card-img-top" 
                     alt="3 Grams Chocolate" 
                     style={cardStyle}
@@ -120,7 +120,7 @@ const Home = () => {
                   height:'380px'
                 }}>
                   <img 
-                    src="../../public/assets/10g.jpg" 
+                    src="./assets/10g.jpg" 
                     className="card-img-top" 
                     alt="10 Grams Chocolate" 
                     style={cardStyle}
@@ -145,7 +145,7 @@ const Home = () => {
                   height:'380px'
                 }}>
                   <img 
-                    src="../../public/assets/kit.jpg" 
+                    src="./assets/kit.jpg" 
                     className="card-img-top" 
                     alt="KitKat Chocolate" 
                     style={cardStyle}

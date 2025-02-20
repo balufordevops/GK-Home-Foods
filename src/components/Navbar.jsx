@@ -25,7 +25,7 @@ const Navbar = () => {
         {/* Left Side - Brand Name & Logo */}
         <NavLink className="navbar-brand d-flex align-items-center" to="/">
           <img
-            src="../../public/assets/logo1.jpg"
+            src="./assets/logo1.jpg"
             alt="logo"
             className="rounded-circle me-2"
             style={{ width: "50px", height: "50px" }}
