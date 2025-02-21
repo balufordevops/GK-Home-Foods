@@ -93,21 +93,29 @@ const Cart = () => {
       toast.error("Please select a UPI app");
       return;
     }
-    setIsProcessingPayment(true);
-    let upiAppURL = "";
+    const upiID = "8522856226-2@ybl";
+    const encodedUPIID = encodeURIComponent(upiID);
+    const encodedAmount = encodeURIComponent(totalAmount);
+    const encodedName = encodeURIComponent("GK Home Foods");
+  
+    let upiAppURL = `upi://pay?pa=${encodedUPIID}&pn=${encodedName}&mc=&tid=&tr=&tn=Payment&am=${encodedAmount}&cu=INR`;
+  
     if (selectedUPIApp === "PhonePe") {
-      upiAppURL = `phonepe://upi/pay?pa=${upiID}&pn=GK Home Foods&am=${totalAmount}&cu=INR`;
+      upiAppURL = `phonepe://upi/pay?pa=${encodedUPIID}&pn=${encodedName}&am=${encodedAmount}&cu=INR`;
     } else if (selectedUPIApp === "Google Pay") {
-      upiAppURL = `tez://upi/pay?pa=${upiID}&pn=GK Home Foods&am=${totalAmount}&cu=INR`;
+      upiAppURL = `tez://upi/pay?pa=${encodedUPIID}&pn=${encodedName}&am=${encodedAmount}&cu=INR`;
     } else if (selectedUPIApp === "Paytm") {
-      upiAppURL = `paytmmp://upi/pay?pa=${upiID}&pn=GK Home Foods&am=${totalAmount}&cu=INR`;
+      upiAppURL = `paytmmp://upi/pay?pa=${encodedUPIID}&pn=${encodedName}&am=${encodedAmount}&cu=INR`;
     }
+  
     window.location.href = upiAppURL;
+  
     setTimeout(() => {
       setPaymentCompleted(true);
       toast.info("Please confirm your payment before proceeding.");
     }, 5000);
   }
+  
   
 
   return (
