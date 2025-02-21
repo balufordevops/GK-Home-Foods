@@ -108,6 +108,7 @@ const Cart = () => {
       toast.info("Please confirm your payment before proceeding.");
     }, 5000);
   }
+  
 
   return (
     <div className="container cart-container">
