@@ -152,9 +152,15 @@ const Cart = () => {
           {selectedPaymentMethod === "upi" && (
             <div className="upi-app-selection text-center mt-3">
               <h5>Select UPI App</h5>
-              <button className="btn btn-secondary mx-2" onClick={() => handleUPISelection("PhonePe")}>PhonePe</button>
-              <button className="btn btn-secondary mx-2" onClick={() => handleUPISelection("Google Pay")}>Google Pay</button>
-              <button className="btn btn-secondary mx-2" onClick={() => handleUPISelection("Paytm")}>Paytm</button>
+              {['PhonePe', 'Google Pay', 'Paytm'].map(app => (
+                <button 
+                  key={app}
+                  className={`btn mx-2 ${selectedUPIApp === app ? 'btn-warning' : 'btn-secondary'}`} 
+                  onClick={() => handleUPISelection(app)}
+                >
+                  {app}
+                </button>
+              ))}
               <button className="btn btn-success mt-3" onClick={handleUPIPayment}>Pay ₹{totalAmount}</button>
             </div>
           )}
