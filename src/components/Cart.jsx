@@ -93,12 +93,12 @@ const Cart = () => {
       toast.error("Please select a UPI app");
       return;
     }
-    const upiID = "8522856226-2@ybl";
+    const upiID = "8522856226-2@ybl"; 
     const encodedUPIID = encodeURIComponent(upiID);
-    const encodedAmount = encodeURIComponent(totalAmount);
     const encodedName = encodeURIComponent("GK Home Foods");
+    const encodedAmount = encodeURIComponent(totalAmount);
   
-    let upiAppURL = `upi://pay?pa=${encodedUPIID}&pn=${encodedName}&mc=&tid=&tr=&tn=Payment&am=${encodedAmount}&cu=INR`;
+    let upiAppURL = `upi://pay?pa=${encodedUPIID}&pn=${encodedName}&am=${encodedAmount}&cu=INR`;
   
     if (selectedUPIApp === "PhonePe") {
       upiAppURL = `phonepe://upi/pay?pa=${encodedUPIID}&pn=${encodedName}&am=${encodedAmount}&cu=INR`;
@@ -115,6 +115,7 @@ const Cart = () => {
       toast.info("Please confirm your payment before proceeding.");
     }, 5000);
   }
+  
   
   
 
